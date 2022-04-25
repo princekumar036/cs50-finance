@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+    <table class="table tablestriped">
+        <thead>
+            <th class="text-start">Symbol</th>
+            <th class="text-start">Name</th>
+            <th class="text-end">Shares</th>
+            <th class="text-end">Price</th>
+            <th class="text-end">TOTAL</th>
+        </thead>
+        <tbody>
+        {%for holding in holdings %}
+            <tr>
+                <td class="text-start">{{ holding['symbol'].upper() }}</td>
+                <td class="text-start">{{ holding['name'] }}</td>
+                <td class="text-end">{{ holding['shares'] }}</td>
+                <td class="text-end">${{ holding['price'] }}</td>
+                <td class="text-end">${{ holding['price'] * holding['shares'] }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <th class="text-end">Cash</th>
+                <td class="text-end">${{ cash }}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <th class="text-end">TOTAL</th>
+                <td class="text-end">${{ total }}</td>
+            </tr>
+        </tfoot>
+    </table>
+{% endblock %}

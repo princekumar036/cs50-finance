@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+    <table class="table tablestriped">
+        <thead>
+            <th class="text-start">Symbol</th>
+            <th class="text-end">Shares</th>
+            <th class="text-end">Price</th>
+            <th class="text-end">Transacted</th>
+        </thead>
+        <tbody>
+        {%for transaction in transactions %}
+            <tr>
+                <td class="text-start">{{ transaction['symbol'].upper() }}</td>
+                <td class="text-end">{{ transaction['shares'] }}</td>
+                <td class="text-end">${{ transaction['price'] }}</td>
+                <td class="text-end">{{ transaction['datetime'] }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
